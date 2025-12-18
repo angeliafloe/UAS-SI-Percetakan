@@ -26,8 +26,12 @@ $current_menu = $_GET['menu'] ?? 'dashboard';
                 <i class="fa fa-home me-2"></i>Dashboard
             </a>
 
+            <a href="index.php?menu=admin" class="nav-item nav-link <?= ($current_menu == 'admin') ? 'active' : '' ?>">
+                <i class="fa fa-user-shield me-2"></i>Data Admin
+            </a>
+
             <a href="index.php?menu=users" class="nav-item nav-link <?= ($current_menu == 'users') ? 'active' : '' ?>">
-                <i class="fa fa-users-cog me-2"></i>Users
+                <i class="fa fa-users-cog me-2"></i>Data Customer
             </a>
 
             <hr class="mx-3 my-2 text-secondary">

@@ -54,6 +54,9 @@
             if ($menu == "") {
                 include 'dashboard-index.php';
             }
+            if ($menu == "admin") {
+                include 'admin-index.php';
+            }
             if ($menu == "users") {
                 include 'users-index.php';
             }

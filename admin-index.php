@@ -8,9 +8,9 @@
         </div>
 
         <div class="d-flex justify-content-end mb-3">
-            <a class="btn btn-sm btn-primary">
+            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambahAdmin">
                 <i class="fa fa-user-plus me-1"></i> Tambah Data
-            </a>
+            </button>
         </div>
 
         <div class="table-responsive">
@@ -60,6 +60,38 @@
             </table>
         </div>
 
+    </div>
+</div>
+<div class="modal fade" id="modalTambahAdmin" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Form Tambah Data Admin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="proses_simpan.php" method="POST">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" required>
+                        <small class="text-muted italic">*Minimal 5 karakter.</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nama Lengkap</label>
+                        <input type="text" name="nama" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" required>
+                        <small class="text-muted italic">*Minimal 8 karakter.</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan Data</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <!-- Users End -->

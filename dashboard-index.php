@@ -149,47 +149,47 @@
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-light rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-2">
-                                <h6 class="mb-0">Messages</h6>
+                                <h6 class="mb-0">Pesan</h6>
                                 <a href="">Show All</a>
                             </div>
                             <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <img class="rounded-circle flex-shrink-0" src="img/testimonial-2.jpg" alt="" style="width: 40px; height: 40px;">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <h6 class="mb-0">Steven</h6>
                                         <small>15 minutes ago</small>
                                     </div>
-                                    <span>Short message goes here...</span>
+                                    <span>Mengajukan pemesanan percetakan brosur</span>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <img class="rounded-circle flex-shrink-0" src="img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
+                                        <h6 class="mb-0">Angel</h6>
+                                        <small>2 jam lalu</small>
                                     </div>
-                                    <span>Short message goes here...</span>
+                                    <span>mengajukan pemesanan percetakan banner</span>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <img class="rounded-circle flex-shrink-0" src="img/testimonial-1.jpg" alt="" style="width: 40px; height: 40px;">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
+                                        <h6 class="mb-0">Nabiel</h6>
+                                        <small>3 jam lalu</small>
                                     </div>
-                                    <span>Short message goes here...</span>
+                                    <span>mengajukan pemesanan percetakan brosur</span>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center pt-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <img class="rounded-circle flex-shrink-0" src="img/testimonial-2.jpg" alt="" style="width: 40px; height: 40px;">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
+                                        <h6 class="mb-0">Felix</h6>
+                                        <small>3 jam lalu</small>
                                     </div>
-                                    <span>Short message goes here...</span>
+                                    <span>mengajukan pemesanan percetakan brosur</span>
                                 </div>
                             </div>
                         </div>
@@ -197,7 +197,7 @@
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-light rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Calender</h6>
+                                <h6 class="mb-0">Jadwal produksi</h6>
                                 <a href="">Show All</a>
                             </div>
                             <div id="calender"></div>
@@ -206,18 +206,18 @@
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-light rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">To Do List</h6>
+                                <h6 class="mb-0">Antrian Status Produksi</h6>
                                 <a href="">Show All</a>
                             </div>
                             <div class="d-flex mb-2">
-                                <input class="form-control bg-transparent" type="text" placeholder="Enter task">
-                                <button type="button" class="btn btn-primary ms-2">Add</button>
+                                <input class="form-control bg-transparent" type="text" placeholder="Masukkan Antrean">
+                                <button type="button" class="btn btn-primary ms-2">Tambah</button>
                             </div>
                             <div class="d-flex align-items-center border-bottom py-2">
                                 <input class="form-check-input m-0" type="checkbox">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span>Short task goes here...</span>
+                                        <span>Cetak Brosur</span>
                                         <button class="btn btn-sm"><i class="fa fa-times"></i></button>
                                     </div>
                                 </div>
@@ -226,7 +226,7 @@
                                 <input class="form-check-input m-0" type="checkbox">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span>Short task goes here...</span>
+                                        <span>Cetak Spanduk</span>
                                         <button class="btn btn-sm"><i class="fa fa-times"></i></button>
                                     </div>
                                 </div>
@@ -235,7 +235,7 @@
                                 <input class="form-check-input m-0" type="checkbox" checked>
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span><del>Short task goes here...</del></span>
+                                        <span><del>Cetak Kartu Nama</del></span>
                                         <button class="btn btn-sm text-primary"><i class="fa fa-times"></i></button>
                                     </div>
                                 </div>
@@ -244,7 +244,7 @@
                                 <input class="form-check-input m-0" type="checkbox">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span>Short task goes here...</span>
+                                        <span>Cetak Poster</span>
                                         <button class="btn btn-sm"><i class="fa fa-times"></i></button>
                                     </div>
                                 </div>
@@ -253,7 +253,7 @@
                                 <input class="form-check-input m-0" type="checkbox">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span>Short task goes here...</span>
+                                        <span>Cetak Sticker</span>
                                         <button class="btn btn-sm"><i class="fa fa-times"></i></button>
                                     </div>
                                 </div>

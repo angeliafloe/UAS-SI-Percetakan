@@ -1,3 +1,4 @@
+
             <!-- Users Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
@@ -5,7 +6,9 @@
                         <h6 class="mb-0">Users Management</h6>
                         <a href="">Show All</a>
                     </div>
-                    <div class="d-flex mb-4"><a class="btn btn-sm btn-warning" href=""><i class="fa fa-user-plus"></i> Add User</a></div>
+                    <div class="d-flex mb-4">
+                        <a class="btn btn-sm btn-warning" href=""><i class="fa fa-user-plus"></i>Add Users</a>
+                    </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
@@ -74,3 +77,4 @@
                 </div>
             </div>
             <!-- Users End -->
+

@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
 
     <!-- Bootstrap -->
@@ -15,208 +16,260 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
+        :root {
+            --soft-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+            --radius: 16px;
+        }
+
         body {
-            background-color: var(--light);
+            background-color: #f5f7fb;
+            font-size: 14px;
         }
 
         .card-soft {
-            border-radius: 14px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            border-radius: var(--radius);
+            box-shadow: var(--soft-shadow);
+            transition: transform .15s ease, box-shadow .15s ease;
         }
 
-        .text-muted-sm {
-            font-size: 13px;
-            color: #6c757d;
+        .card-soft:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, .08);
         }
 
         .icon-circle {
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
-            background: rgba(13, 110, 253, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 20px;
         }
 
-        .table th,
-        .table td {
-            vertical-align: middle;
+        .icon-primary {
+            background: rgba(13, 110, 253, .12);
+            color: #0d6efd;
+        }
+
+        .icon-success {
+            background: rgba(25, 135, 84, .12);
+            color: #198754;
+        }
+
+        .icon-warning {
+            background: rgba(255, 193, 7, .18);
+            color: #ffc107;
+        }
+
+        .icon-danger {
+            background: rgba(220, 53, 69, .12);
+            color: #dc3545;
         }
 
         .rounded-box {
-            border-radius: 14px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            border-radius: var(--radius);
+            box-shadow: var(--soft-shadow);
+        }
+
+        .table thead th {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: .03em;
+        }
+
+        .badge {
+            border-radius: 50px;
+            padding: .45em .8em;
+            font-weight: 500;
+        }
+
+        .avatar {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container-fluid p-4 bg-light">
+    <div class="container-fluid p-4">
 
-        <!-- Stats Cards -->
+        <!-- STATS -->
         <div class="row g-4 mb-4">
             <div class="col-sm-6 col-xl-3">
                 <div class="card-soft bg-white p-4 d-flex justify-content-between align-items-center">
                     <div>
-                        <p class="text-muted-sm mb-1">Today Sales</p>
-                        <h4 class="fw-bold mb-0">$1,234</h4>
+                        <p class="text-muted mb-1">Menunggu Harga</p>
+                        <h4 class="fw-bold mb-0">24 Order</h4>
                     </div>
-                    <div class="icon-circle text-primary">
-                        <i class="fa fa-chart-line"></i>
-                    </div>
+                    <div class="icon-circle icon-warning"><i class="fa-solid fa-clock"></i></div>
                 </div>
             </div>
 
             <div class="col-sm-6 col-xl-3">
                 <div class="card-soft bg-white p-4 d-flex justify-content-between align-items-center">
                     <div>
-                        <p class="text-muted-sm mb-1">Total Sales</p>
-                        <h4 class="fw-bold mb-0">$18,420</h4>
+                        <p class="text-muted mb-1">Menunggu Konfirmasi</p>
+                        <h4 class="fw-bold mb-0">54 Customer</h4>
                     </div>
-                    <div class="icon-circle text-success">
-                        <i class="fa fa-chart-bar"></i>
-                    </div>
+                    <div class="icon-circle icon-primary"><i class="fa-solid fa-user-check"></i></div>
                 </div>
             </div>
 
             <div class="col-sm-6 col-xl-3">
                 <div class="card-soft bg-white p-4 d-flex justify-content-between align-items-center">
                     <div>
-                        <p class="text-muted-sm mb-1">Today Revenue</p>
-                        <h4 class="fw-bold mb-0">$920</h4>
+                        <p class="text-muted mb-1">Siap Produksi</p>
+                        <h4 class="fw-bold mb-0">31 Order</h4>
                     </div>
-                    <div class="icon-circle text-primary">
-                        <i class="fa fa-chart-area"></i>
-                    </div>
+                    <div class="icon-circle icon-success"><i class="fa-solid fa-industry"></i></div>
                 </div>
             </div>
 
             <div class="col-sm-6 col-xl-3">
                 <div class="card-soft bg-white p-4 d-flex justify-content-between align-items-center">
                     <div>
-                        <p class="text-muted-sm mb-1">Total Revenue</p>
-                        <h4 class="fw-bold mb-0">$32,100</h4>
+                        <p class="text-muted mb-1">Total Order</p>
+                        <h4 class="fw-bold mb-0">120 Order</h4>
                     </div>
-                    <div class="icon-circle text-success">
-                        <i class="fa fa-chart-pie"></i>
-                    </div>
+                    <div class="icon-circle icon-danger"><i class="fa-solid fa-chart-line"></i></div>
                 </div>
             </div>
         </div>
 
-        <!-- Charts -->
-        <div class="row g-4 mb-4">
-            <div class="col-xl-6">
-                <div class="bg-white rounded-box p-4">
-                    <div class="d-flex justify-content-between mb-3">
-                        <h6 class="mb-0">Worldwide Sales</h6>
-                        <a href="#">Show All</a>
-                    </div>
-                    <canvas id="worldwide-sales"></canvas>
-                </div>
-            </div>
-
-            <div class="col-xl-6">
-                <div class="bg-white rounded-box p-4">
-                    <div class="d-flex justify-content-between mb-3">
-                        <h6 class="mb-0">Sales & Revenue</h6>
-                        <a href="#">Show All</a>
-                    </div>
-                    <canvas id="salse-revenue"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- Recent Sales -->
+        <!-- RECENT SALES -->
         <div class="bg-white rounded-box p-4 mb-4">
-            <div class="d-flex justify-content-between mb-3">
-                <h6 class="mb-0">Recent Sales</h6>
-                <a href="#">Show All</a>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-semibold mb-0">Penjualan Terbaru</h6>
+                <a href="#" class="text-decoration-none">View all</a>
             </div>
 
             <div class="table-responsive">
-                <table class="table table-hover table-bordered text-start">
+                <table class="table align-middle table-hover">
                     <thead class="table-light">
                         <tr>
-                            <th><input class="form-check-input" type="checkbox"></th>
-                            <th>Date</th>
-                            <th>Invoice</th>
+                            <th>#</th>
+                            <th>Tanggal</th>
+                            <th>ID Order</th>
                             <th>Customer</th>
-                            <th>Amount</th>
+                            <th>Jenis Jasa</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2045</td>
-                            <td>INV-0123</td>
-                            <td>John Doe</td>
-                            <td>$123</td>
-                            <td><span class="badge bg-success">Paid</span></td>
-                            <td><a class="btn btn-sm btn-primary">Detail</a></td>
+                            <td><input type="checkbox" class="form-check-input"></td>
+                            <td>01 Des 2025</td>
+                            <td>Banner01-120-2025</td>
+                            <td>Berlin</td>
+                            <td>Cetak Banner</td>
+                            <td><span class="badge bg-success">Lunas</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary">Detail</button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input"></td>
+                            <td>05 Des 2025</td>
+                            <td>Brosur02-158-2025</td>
+                            <td>Angelia</td>
+                            <td>Cetak Brosur</td>
+                            <td><span class="badge bg-success">Lunas</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary">Detail</button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input"></td>
+                            <td>06 Des 2025</td>
+                            <td>Banner01-121-2025</td>
+                            <td>Nabiel</td>
+                            <td>Cetak Banner</td>
+                            <td><span class="badge bg-success">Lunas</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary">Detail</button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input"></td>
+                            <td>07 Des 2025</td>
+                            <td>Brosur02-159-2025</td>
+                            <td>Felix</td>
+                            <td>Cetak Brosur</td>
+                            <td><span class="badge bg-success">Lunas</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary">Detail</button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input"></td>
+                            <td>10 Des 2025</td>
+                            <td>KartuN03-20-2025</td>
+                            <td>Karol</td>
+                            <td>Cetak Kartu Nama</td>
+                            <td><span class="badge bg-success">Lunas</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary">Detail</button></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- Widgets -->
+        <!-- WIDGETS -->
         <div class="row g-4">
-            <!-- Messages -->
+
+            <!-- MESSAGES -->
             <div class="col-xl-4">
                 <div class="bg-white rounded-box p-4 h-100">
                     <div class="d-flex justify-content-between mb-3">
-                        <h6 class="mb-0">Messages</h6>
-                        <a href="#">Show All</a>
+                        <h6 class="fw-semibold mb-0">Notifikasi</h6>
+                        <a href="#" class="text-decoration-none">All</a>
                     </div>
 
-                    <div class="d-flex align-items-center border-bottom py-3">
-                        <img src="https://i.pravatar.cc/40" class="rounded-circle">
-                        <div class="ms-3">
-                            <h6 class="mb-0">John Doe</h6>
+                    <div class="d-flex align-items-start gap-3 py-3 border-bottom">
+                        <img src="https://i.pravatar.cc/100" class="rounded-circle avatar">
+                        <div>
+                            <h6 class="mb-1">Steven</h6>
                             <small class="text-muted">15 minutes ago</small>
-                            <p class="mb-0">Short message goes here...</p>
+                            <p class="mb-0">Mengajukan pemesanan percetakan produk</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Calendar -->
+            <!-- CALENDAR -->
             <div class="col-xl-4">
                 <div class="bg-white rounded-box p-4 h-100">
                     <div class="d-flex justify-content-between mb-3">
-                        <h6 class="mb-0">Calendar</h6>
-                        <a href="#">Show All</a>
+                        <h6 class="fw-semibold mb-0">Calendar</h6>
+                        <i class="fa-regular fa-calendar"></i>
                     </div>
-                    <div class="text-muted">Calendar placeholder</div>
+                    <div id="calender"></div>
                 </div>
             </div>
 
-            <!-- To Do -->
+            <!-- TODO -->
             <div class="col-xl-4">
                 <div class="bg-white rounded-box p-4 h-100">
                     <div class="d-flex justify-content-between mb-3">
-                        <h6 class="mb-0">To Do List</h6>
-                        <a href="#">Show All</a>
+                        <h6 class="fw-semibold mb-0">To‑Do</h6>
+                        <i class="fa-solid fa-list-check"></i>
                     </div>
 
-                    <div class="d-flex mb-3">
-                        <input class="form-control" placeholder="Enter task">
-                        <button class="btn btn-primary ms-2">Add</button>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="New task">
+                        <button class="btn btn-primary">Add</button>
                     </div>
 
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox">
-                        <label class="form-check-label">Finish dashboard UI</label>
+                    <div class="todo-item mb-2">
+                        <input type="checkbox" class="form-check-input">
+                        <span>Finish dashboard UI</span>
                     </div>
                 </div>
             </div>
+
         </div>
-
     </div>
 
 </body>

@@ -35,9 +35,9 @@
                             <a class="btn btn-sm btn-warning me-1" title="Edit">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a class="btn btn-sm btn-danger" title="Delete">
+                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapusAdmin">
                                 <i class="fa fa-trash"></i>
-                            </a>
+                            </button>
                         </td>
                     </tr>
 
@@ -94,4 +94,23 @@
         </div>
     </div>
 </div>
-<!-- Users End -->
+
+<div class="modal fade" id="modalHapusAdmin" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">Konfirmasi Hapus</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p>Apakah Anda yakin ingin menghapus data ini?</p>
+                <b id="hapus-nama" class="text-danger"></b>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <input type="hidden" name="id_admin" id="hapus-id">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ya, Hapus</button>
+            </div>
+        </div>
+    </div>
+</div>

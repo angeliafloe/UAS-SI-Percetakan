@@ -1,87 +1,72 @@
-            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+<nav class="navbar navbar-expand navbar-light sticky-top px-4 py-2 dashboard-navbar">
+    <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+        <h2 class="text-primary mb-0">
+            <i class="fa fa-hashtag"></i>
+        </h2>
+    </a>
+
+    <a href="#" class="sidebar-toggler flex-shrink-0 me-3">
+        <i class="fa fa-bars"></i>
+    </a>
+
+    <form class="d-none d-md-flex">
+        <input class="form-control navbar-search" type="search" placeholder="Search...">
+    </form>
+
+    <div class="navbar-nav align-items-center ms-auto">
+
+        <!-- Messages -->
+        <div class="nav-item dropdown me-3">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="fa fa-envelope"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-soft p-2">
+                <a href="#" class="dropdown-item rounded">
+                    <div class="d-flex align-items-center">
+                        <img src="https://i.pravatar.cc/40" class="rounded-circle" width="40">
+                        <div class="ms-2">
+                            <h6 class="mb-0 fw-semibold">John Doe</h6>
+                            <small class="text-muted">Sent you a message</small>
+                        </div>
+                    </div>
                 </a>
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item text-center text-primary fw-semibold">
+                    See all messages
                 </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
-                </form>
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Messages</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notification</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New user added</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Password changed</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all notifications</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
-                            <i class="fas fa-user me-lg-2 fs-4"></i>
-                            <span class="d-none d-lg-inline-flex">Admin 1</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            </div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="nav-item dropdown me-3">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="fa fa-bell"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-soft p-2">
+                <a href="#" class="dropdown-item rounded">
+                    <h6 class="mb-0 fw-semibold">Profile updated</h6>
+                    <small class="text-muted">15 minutes ago</small>
+                </a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item text-center text-primary fw-semibold">
+                    See all notifications
+                </a>
+            </div>
+        </div>
+
+        <!-- User -->
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
+                <i class="fa fa-user-circle fs-4 me-2"></i>
+                <span class="fw-semibold d-none d-lg-inline">Admin 1</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-soft p-2">
+                <a href="#" class="dropdown-item rounded">My Profile</a>
+                <a href="#" class="dropdown-item rounded">Settings</a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item rounded text-danger">Log Out</a>
+            </div>
+        </div>
+
+    </div>
+</nav>

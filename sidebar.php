@@ -16,7 +16,7 @@ $current_menu = $_GET['menu'] ?? 'dashboard';
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
             <div class="ms-3">
-                <h6 class="mb-0">Admin 1</h6>
+                <h6 class="mb-0">angeliafloe</h6>
                 <span>Admin</span>
             </div>
         </div>
@@ -32,6 +32,14 @@ $current_menu = $_GET['menu'] ?? 'dashboard';
 
             <a href="index.php?menu=users" class="nav-item nav-link <?= ($current_menu == 'users') ? 'active' : '' ?>">
                 <i class="fa fa-users-cog me-2"></i>Data Customer
+            </a>
+
+            <a href="index.php?menu=laporan" class="nav-item nav-link <?= ($current_menu == 'laporan') ? 'active' : '' ?>">
+                <i class="fa fa-receipt me-2"></i>Laporan Transaksi
+            </a>
+
+            <a href="index.php?menu=jasa" class="nav-item nav-link <?= ($current_menu == 'jasa') ? 'active' : '' ?>">
+                <i class="fa fa-clipboard-list me-2"></i>Daftar Jasa
             </a>
 
             <hr class="mx-3 my-2 text-secondary">

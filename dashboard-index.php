@@ -242,7 +242,7 @@
             <div class="col-xl-4">
                 <div class="bg-white rounded-box p-4 h-100">
                     <div class="d-flex justify-content-between mb-3">
-                        <h6 class="fw-semibold mb-0">Calendar</h6>
+                        <h6 class="fw-semibold mb-0">Kalender</h6>
                         <i class="fa-regular fa-calendar"></i>
                     </div>
                     <div id="calender"></div>
@@ -253,7 +253,7 @@
             <div class="col-xl-4">
                 <div class="bg-white rounded-box p-4 h-100">
                     <div class="d-flex justify-content-between mb-3">
-                        <h6 class="fw-semibold mb-0">To‑Do</h6>
+                        <h6 class="fw-semibold mb-0">Antrian Status Produksi</h6>
                         <i class="fa-solid fa-list-check"></i>
                     </div>
 
@@ -264,7 +264,19 @@
 
                     <div class="todo-item mb-2">
                         <input type="checkbox" class="form-check-input">
-                        <span>Finish dashboard UI</span>
+                        <span>Produksi 1</span>
+                    </div>
+                    <div class="todo-item mb-2">
+                        <input type="checkbox" class="form-check-input">
+                        <span>Produksi 2</span>
+                    </div>
+                    <div class="todo-item mb-2">
+                        <input type="checkbox" class="form-check-input">
+                        <span>Produksi 3</span>
+                    </div>
+                    <div class="todo-item mb-2">
+                        <input type="checkbox" class="form-check-input">
+                        <span>Produksi 4</span>
                     </div>
                 </div>
             </div>

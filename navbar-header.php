@@ -25,7 +25,7 @@
                     <div class="d-flex align-items-center">
                         <img src="https://i.pravatar.cc/40" class="rounded-circle" width="40">
                         <div class="ms-2">
-                            <h6 class="mb-0 fw-semibold">John Doe</h6>
+                            <h6 class="mb-0 fw-semibold">Steven</h6>
                             <small class="text-muted">Sent you a message</small>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
                 <i class="fa fa-user-circle fs-4 me-2"></i>
-                <span class="fw-semibold d-none d-lg-inline">Admin 1</span>
+                <span class="fw-semibold d-none d-lg-inline">angeliafloe</span>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-soft p-2">
                 <a href="#" class="dropdown-item rounded">My Profile</a>

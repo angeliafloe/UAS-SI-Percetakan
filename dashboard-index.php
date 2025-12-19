@@ -9,93 +9,19 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom Styles -->
+    <link href="css/style.css" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <style>
-        :root {
-            --soft-shadow: 0 8px 24px rgba(0, 0, 0, .06);
-            --radius: 16px;
-        }
-
-        body {
-            background-color: #f5f7fb;
-            font-size: 14px;
-        }
-
-        .card-soft {
-            border-radius: var(--radius);
-            box-shadow: var(--soft-shadow);
-            transition: transform .15s ease, box-shadow .15s ease;
-        }
-
-        .card-soft:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, .08);
-        }
-
-        .icon-circle {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        .icon-primary {
-            background: rgba(13, 110, 253, .12);
-            color: #0d6efd;
-        }
-
-        .icon-success {
-            background: rgba(25, 135, 84, .12);
-            color: #198754;
-        }
-
-        .icon-warning {
-            background: rgba(255, 193, 7, .18);
-            color: #ffc107;
-        }
-
-        .icon-danger {
-            background: rgba(220, 53, 69, .12);
-            color: #dc3545;
-        }
-
-        .rounded-box {
-            border-radius: var(--radius);
-            box-shadow: var(--soft-shadow);
-        }
-
-        .table thead th {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: .03em;
-        }
-
-        .badge {
-            border-radius: 50px;
-            padding: .45em .8em;
-            font-weight: 500;
-        }
-
-        .avatar {
-            width: 42px;
-            height: 42px;
-            object-fit: cover;
-        }
-
-        .todo-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-    </style>
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>

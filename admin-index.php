@@ -1,116 +1,97 @@
-<!-- Admin Start -->
-<div class="container-fluid px-0 mb-4">
-    <div class="bg-white rounded-box p-4">
+<!DOCTYPE html>
+<html lang="en">
 
-        <div class="d-flex align-items-center justify-content-between mb-3">
-            <h6 class="mb-0 fw-semibold">Manajemen Admin</h6>
-            <a href="#" class="text-primary">Show All</a>
+<head>
+    <meta charset="utf-8">
+    <title>Sistem Informasi Pemesanan Percetakan</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-xxl position-relative bg-light d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
         </div>
+        <!-- Spinner End -->
 
-        <div class="d-flex justify-content-end mb-3">
-            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambahAdmin">
-                <i class="fa fa-user-plus me-1"></i> Tambah Data
-            </button>
+        <?php include 'sidebar.php'; ?>
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <?php include 'navbar-header.php'; ?>
+            <!-- Navbar End -->
+
+            <?php
+            $menu = isset($_GET['menu']) ? $_GET['menu'] : '';
+            if ($menu == "") {
+                include 'dashboard-index.php';
+            }
+            if ($menu == "data-admin") {
+                include 'data-admin-index.php';
+            }
+            if ($menu == "data-customer") {
+                include 'data-customer-index.php';
+            }
+            ?>
+
+            <!-- Footer Start -->
+            <?php include 'footer.php'; ?>
+            <!-- Footer End -->
         </div>
+        <!-- Content End -->
 
-        <div class="table-responsive">
-            <table class="table table-hover table-bordered align-middle mb-0">
-                <thead class="table-light">
-                    <tr>
-                        <th>No</th>
-                        <th>ID Admin</th>
-                        <th>Username</th>
-                        <th>Nama</th>
-                        <th class="text-center">Action</th>
-                    </tr>
-                </thead>
 
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>24100007</td>
-                        <td>angeliafloe</td>
-                        <td>Angelia</td>
-                        <td class="text-center">
-                            <a class="btn btn-sm btn-warning me-1" title="Edit">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapusAdmin">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>2</td>
-                        <td>24100009</td>
-                        <td>S-BerlinNew</td>
-                        <td>Berlin</td>
-                        <td class="text-center">
-                            <a class="btn btn-sm btn-warning me-1">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <a class="btn btn-sm btn-danger">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
-
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
-</div>
-<div class="modal fade" id="modalTambahAdmin" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel">Form Tambah Data Admin</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="proses_simpan.php" method="POST">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control" required>
-                        <small class="text-muted italic">*Minimal 5 karakter.</small>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Nama Lengkap</label>
-                        <input type="text" name="nama" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" required>
-                        <small class="text-muted italic">*Minimal 8 karakter.</small>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan Data</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
-<div class="modal fade" id="modalHapusAdmin" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header bg-danger text-white">
-                <h5 class="modal-title">Konfirmasi Hapus</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body text-center">
-                <p>Apakah Anda yakin ingin menghapus data ini?</p>
-                <b id="hapus-nama" class="text-danger"></b>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <input type="hidden" name="id_admin" id="hapus-id">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ya, Hapus</button>
-            </div>
-        </div>
-    </div>
-</div>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script>
+        $("#signout").click(function() {
+            alert("Anda berhasil Sign Out. Terima kasih.");
+            $(location).attr('href', 'signin.php');
+        })
+    </script>
+</body>
+
+</html>

@@ -1,9 +1,18 @@
+<?php
+session_start();
+
+// <<< TAMBAHAN: kalau sudah login, jangan balik ke login
+if (isset($_SESSION['admin_logged_in'])) {
+    header("Location: admin-index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>Login Admin</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -15,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
+    
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -41,35 +50,53 @@
         </div>
         <!-- Spinner End -->
 
-
         <!-- Sign In Start -->
-        <div class="container-fluid">
+        <div class="container-fluid bg-light">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                    <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
-                                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                    <div class="bg-white rounded p-4 p-sm-5 my-4 mx-3">
+                        <div class="text-center mb-3"> 
+                            <a href="index.html" class="d-inline-block mb-3">
+                                <img src="img/mjl.jpg" width="100px" height="auto" class="rounded">
+                                <h3 class="mt-2" style="color:#0a6ea2;">Log In Admin MJL</h3>
                             </a>
-                            <h3>Sign In</h3>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+                        <form action="admin-login-process.php" method="POST">
+                            <div class="form-floating mb-3">
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="floatingInput"
+                                    name="username_admin" 
+                                    placeholder="Username Admin"
+                                    required
+                                >
+                                <label for="floatingInput">Masukkan Username Admin</label>
                             </div>
-                            <a href="">Forgot Password</a>
-                        </div>
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4" id="signin">Sign In</button>
-                        <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p>
+
+                            <div class="form-floating mb-4">
+                                <input 
+                                    type="password" 
+                                    class="form-control" 
+                                    id="floatingPassword"
+                                    name="password_admin"
+                                    placeholder="Password Admin"
+                                    required
+                                >
+                                <label for="floatingPassword">Password</label>
+                            </div>
+
+                            <button 
+                                type="submit" 
+                                class="btn py-3 w-100 mb-4"
+                                style="background-color: #0a6ea2; border-color: #0a6ea2; color: white;"
+                            >
+                                Log in
+                            </button>
+
+                        </form>
+                        <?php /* <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p>*/?>
                     </div>
                 </div>
             </div>
@@ -90,12 +117,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script>
-        $("#signin").click(function() {
-            alert("Anda berhasil Sign In. Selamat datang di Sistem Informasi.");
-            $(location).attr('href', 'index.php');
-        })
-    </script>
 </body>
 
 </html>

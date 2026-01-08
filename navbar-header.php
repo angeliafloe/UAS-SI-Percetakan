@@ -58,7 +58,13 @@
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
                 <i class="fa fa-user-circle fs-4 me-2"></i>
-                <span class="fw-semibold d-none d-lg-inline">angeliafloe</span>
+                <?php
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+                $username = $_SESSION['username_admin'] ?? 'Guest';
+                ?>
+                <h6 class="mb-0"><?= htmlspecialchars($username) ?></h6>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-soft p-2">
                 <a href="#" class="dropdown-item rounded">My Profile</a>

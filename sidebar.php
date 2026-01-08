@@ -16,37 +16,44 @@ $current_menu = $_GET['menu'] ?? 'dashboard';
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
             <div class="ms-3">
-                <h6 class="mb-0">angeliafloe</h6>
+                <?php
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+                $username = $_SESSION['username_admin'] ?? 'Guest';
+                ?>
+                <h6 class="mb-0"><?= htmlspecialchars($username) ?></h6>
                 <span>Admin</span>
             </div>
         </div>
 
         <div class="navbar-nav w-100">
-            <a href="index.php" class="nav-item nav-link <?= ($current_menu == 'dashboard') ? 'active' : '' ?>">
+            <a href="admin-index.php" class="nav-item nav-link <?= ($current_menu == 'dashboard') ? 'active' : '' ?>">
                 <i class="fa fa-home me-2"></i>Dashboard
             </a>
 
-            <a href="index.php?menu=admin" class="nav-item nav-link <?= ($current_menu == 'admin') ? 'active' : '' ?>">
+            <a href="admin-index.php?menu=data-admin" class="nav-item nav-link <?= ($current_menu == 'data-admin') ? 'active' : '' ?>">
                 <i class="fa fa-user-shield me-2"></i>Data Admin
             </a>
 
-            <a href="index.php?menu=users" class="nav-item nav-link <?= ($current_menu == 'users') ? 'active' : '' ?>">
+            <a href="admin-index.php?menu=data-customer" class="nav-item nav-link <?= ($current_menu == 'data-customer') ? 'active' : '' ?>">
                 <i class="fa fa-users-cog me-2"></i>Data Customer
             </a>
 
-            <a href="index.php?menu=laporan" class="nav-item nav-link <?= ($current_menu == 'laporan') ? 'active' : '' ?>">
+            <a href="admin-index.php?menu=laporan" class="nav-item nav-link <?= ($current_menu == 'laporan') ? 'active' : '' ?>">
                 <i class="fa fa-receipt me-2"></i>Laporan Transaksi
             </a>
 
-            <a href="index.php?menu=jasa" class="nav-item nav-link <?= ($current_menu == 'jasa') ? 'active' : '' ?>">
+            <a href="admin-index.php?menu=jasa" class="nav-item nav-link <?= ($current_menu == 'jasa') ? 'active' : '' ?>">
                 <i class="fa fa-clipboard-list me-2"></i>Daftar Jasa
             </a>
 
             <hr class="mx-3 my-2 text-secondary">
 
-            <a href="signin.php" class="nav-item nav-link text-danger" id="signout">
-                <i class="fa fa-sign-out-alt me-2"></i>Sign Out
+            <a href="logout.php" class="nav-item nav-link text-danger">
+                <i class="fa fa-sign-out-alt me-2"></i>Log Out
             </a>
+
         </div>
     </nav>
 </div>

@@ -1,3 +1,38 @@
+<?php
+session_start();
+require 'connect.php';
+
+$produk_query = mysqli_query($conn, "SELECT * FROM produk ORDER BY nama_produk ASC");
+$id_customer = $_SESSION['id_customer'] ?? 'CUS-000001';
+
+if (!isset($_SESSION['id_customer'])) {
+    header("Location: login.php");
+    exit;
+}
+
+if (isset($_POST['submit'])) {
+    $produk_id = $_POST['produk'];
+    $size      = $_POST['size'];
+    $qty       = $_POST['qty'];
+    $design_option = $_POST['design_option'];
+    $deskripsi    = $_POST['deskripsi'] ?? '';
+    $file_name    = $_FILES['design_file']['name'] ?? '';
+    $tgl_jam_pesan = date('Y-m-d H:i:s');
+
+    $p = mysqli_fetch_assoc(mysqli_query($conn, "SELECT harga_produk FROM produk WHERE id_produk='$produk_id'"));
+    $harga_produk = $p['harga_produk'] ?? 0;
+    $total_biaya = $harga_produk * $qty;
+    $id_order = 'ORD-' . strtoupper(substr(md5(uniqid()), 0, 8));
+
+    $stmt = mysqli_prepare($conn, "INSERT INTO orders (id_order, id_customer, id_produk, tgl_jam_pesan, total_biaya, status, design_option, deskripsi, file_name, qty) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $status = 'pending';
+    mysqli_stmt_bind_param($stmt, "ssssissssi", $id_order, $id_customer, $produk_id, $tgl_jam_pesan, $total_biaya, $status, $design_option, $deskripsi, $file_name, $qty);
+    mysqli_stmt_execute($stmt);
+
+    echo "<div class='alert alert-success mt-3'>Pesanan berhasil dikirim! ID Order: $id_order</div>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -5,7 +40,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Pembelian</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -18,18 +53,22 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-        .form-control, .form-select {
+        .form-control,
+        .form-select {
             border-radius: 8px;
             padding: 10px;
             border: 1px solid #dee2e6;
         }
+
         .hidden {
             display: none;
         }
+
         .form-container {
             max-width: 600px;
             margin: 50px auto;
         }
+
         label {
             font-weight: 600;
             margin-bottom: 8px;
@@ -51,16 +90,16 @@
                 </div>
 
                 <form action="" method="POST" enctype="multipart/form-data">
-
                     <div class="mb-3">
-                        <label for="produk" class="form-label">Pilih Jenis Produk</label>
+                        <label for="produk" class="form-label">Pilih Produk</label>
                         <select name="produk" id="produk" class="form-select" required>
                             <option value="">-- Pilih Produk --</option>
-                            <option value="Kaos Polos">Kaos Polos (Cotton Combed 30s)</option>
-                            <option value="Hoodie">Hoodie / Jumper</option>
-                            <option value="Totebag">Totebag Kanvas</option>
+                            <?php while ($row = mysqli_fetch_assoc($produk_query)) : ?>
+                                <option value="<?= $row['id_produk'] ?>">
+                                    <?= htmlspecialchars($row['nama_produk']) ?> (Rp <?= number_format($row['harga_produk'], 0, ',', '.') ?>)
+                                </option>
+                            <?php endwhile; ?>
                         </select>
-                        <div class="text-muted-sm mt-1">* Contoh gambar akan muncul sesuai pilihan</div>
                     </div>
 
                     <div class="row g-3 mb-3">
@@ -83,11 +122,11 @@
                         <label class="form-label d-block">Metode Desain</label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="design_option" value="upload" id="opt_upload" onclick="toggleDesignFields()" required>
-                            <label class="form-check-label" style="font-weight: normal;" for="opt_upload">Upload Design</label>
+                            <label class="form-check-label" for="opt_upload">Upload Design</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="design_option" value="makeit" id="opt_makeit" onclick="toggleDesignFields()">
-                            <label class="form-check-label" style="font-weight: normal;" for="opt_makeit">Jasa Desain</label>
+                            <label class="form-check-label" for="opt_makeit">Jasa Desain</label>
                         </div>
                     </div>
 
@@ -101,33 +140,40 @@
                         <textarea name="deskripsi" id="deskripsi" class="form-control" rows="3" placeholder="Contoh: Saya ingin gambar kucing warna biru..."></textarea>
                     </div>
 
-                    <button type="submit" name="submit" class="btn w-100 py-3 rounded-pill" style="background-color: #0a6ea2; border-color: #0a6ea2; color: white;">
-                        Kirim Pesanan <i class="fa fa-paper-plane ms-2"></i>
-                    </button>
+                    <button type="submit" name="submit" class="btn btn-primary w-100">Kirim Pesanan</button>
                 </form>
 
                 <?php if (isset($_POST['submit'])): ?>
-                <div class="mt-4 p-3 bg-light rounded-box border-0">
-                    <h5 class="text-primary">Ringkasan Pesanan:</h5>
-                    <hr>
-                    <div class="table-responsive">
-                        <table class="table table-sm mb-0">
-                            <tr><td><strong>Produk</strong></td><td>: <?php echo $_POST['produk']; ?></td></tr>
-                            <tr><td><strong>Ukuran</strong></td><td>: <?php echo $_POST['size']; ?></td></tr>
-                            <tr><td><strong>Jumlah</strong></td><td>: <?php echo $_POST['qty']; ?> pcs</td></tr>
-                            <tr>
-                                <td><strong>Metode</strong></td>
-                                <td>: <?php 
-                                    if ($_POST['design_option'] == 'upload') {
-                                        echo "Upload (" . $_FILES['design_file']['name'] . ")";
-                                    } else {
-                                        echo "Jasa Desain<br><small class='text-muted'>" . $_POST['deskripsi'] . "</small>";
-                                    }
-                                ?></td>
-                            </tr>
-                        </table>
+                    <div class="mt-4 p-3 bg-light rounded-box border-0">
+                        <h5 class="text-primary">Ringkasan Pesanan:</h5>
+                        <hr>
+                        <div class="table-responsive">
+                            <table class="table table-sm mb-0">
+                                <tr>
+                                    <td><strong>Produk</strong></td>
+                                    <td>: <?php echo $_POST['produk']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Ukuran</strong></td>
+                                    <td>: <?php echo $_POST['size']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Jumlah</strong></td>
+                                    <td>: <?php echo $_POST['qty']; ?> pcs</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Metode</strong></td>
+                                    <td>: <?php
+                                            if ($_POST['design_option'] == 'upload') {
+                                                echo "Upload (" . $_FILES['design_file']['name'] . ")";
+                                            } else {
+                                                echo "Jasa Desain<br><small class='text-muted'>" . $_POST['deskripsi'] . "</small>";
+                                            }
+                                            ?></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
-                </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -150,4 +196,5 @@
     </script>
 
 </body>
+
 </html>

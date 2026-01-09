@@ -113,7 +113,8 @@ $no = 1;
             <form action="edit.php" method="POST">
 
                 <input type="hidden" name="table" value="admins">
-                <input type="hidden" name="id" id="edit-id">
+                <input type="hidden" name="column" value="id_admin">
+                <input type="hidden" name="id" id="edit-id-admin">
 
                 <div class="modal-header">
                     <h5 class="modal-title">Edit Data Admin</h5>
@@ -180,19 +181,19 @@ $no = 1;
 </div>
 
 <script>
-document.addEventListener('show.bs.modal', function(event) {
-    const button = event.relatedTarget;
-    const modal = event.target;
+    document.addEventListener('show.bs.modal', function(event) {
+        const button = event.relatedTarget;
+        const modal = event.target;
 
-    if (modal.id === 'modalEditAdmin') {
-        modal.querySelector('#edit-id').value = button.dataset.id;
-        modal.querySelector('#edit-username').value = button.dataset.username;
-        modal.querySelector('#edit-nama').value = button.dataset.nama;
-    } else if (modal.id === 'modalHapus') {
-        modal.querySelector('#hapus-id').value = button.dataset.id;
-        modal.querySelector('#hapus-nama').innerText = button.dataset.nama;
-        modal.querySelector('#hapus-table').value = button.dataset.table;
-        modal.querySelector('#hapus-column').value = button.dataset.column;
-    }
-});
+        if (modal.id === 'modalEditAdmin') {
+            modal.querySelector('#edit-id-admin').value = button.dataset.id;
+            modal.querySelector('#edit-username').value = button.dataset.username;
+            modal.querySelector('#edit-nama').value = button.dataset.nama;
+        } else if (modal.id === 'modalHapus') {
+            modal.querySelector('#hapus-id').value = button.dataset.id;
+            modal.querySelector('#hapus-nama').innerText = button.dataset.nama;
+            modal.querySelector('#hapus-table').value = button.dataset.table;
+            modal.querySelector('#hapus-column').value = button.dataset.column;
+        }
+    });
 </script>

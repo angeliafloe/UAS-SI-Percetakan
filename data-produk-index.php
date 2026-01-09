@@ -1,17 +1,22 @@
 <?php
 require 'connect.php';
-
-$query = mysqli_query($conn, "SELECT * FROM customer ORDER BY id_customer ASC");
 $no = 1;
+
+$query = mysqli_query($conn, "SELECT * FROM produk ORDER BY id_produk ASC");
 ?>
 
-<!-- Customer Start -->
 <div class="container-fluid px-0 mb-4">
     <div class="bg-white rounded-box p-4">
 
         <div class="d-flex align-items-center justify-content-between mb-3">
-            <h6 class="mb-0 fw-semibold">Manajemen Customer</h6>
+            <h6 class="mb-0 fw-semibold">Manajemen Produk</h6>
             <a href="#" class="text-primary">Show All</a>
+        </div>
+
+        <div class="d-flex justify-content-end mb-3">
+            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambahProduk">
+                <i class="fa fa-user-plus me-1"></i> Tambah Data
+            </button>
         </div>
 
         <div class="table-responsive">
@@ -19,52 +24,38 @@ $no = 1;
                 <thead class="table-light">
                     <tr>
                         <th>No</th>
-                        <th>ID Customer</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Nomor Telepon</th>
-                        <th>Total Order</th>
+                        <th>ID Produk</th>
+                        <th>Nama Produk</th>
+                        <th>Harga Produk</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     <?php while ($row = mysqli_fetch_assoc($query)) : ?>
                         <tr>
                             <td><?= $no++ ?></td>
-                            <td><?= htmlspecialchars($row['id_customer']) ?></td>
-                            <td><?= htmlspecialchars($row['nama_lengkap']) ?></td>
-                            <td><?= htmlspecialchars($row['email']) ?></td>
-                            <td><?= htmlspecialchars($row['no_hp']) ?></td>
-                            <td>
-                                <?php
-                                $customer_id = $row['id_customer'];
-                                $order_query = mysqli_query($conn, "SELECT COUNT(*) AS total_orders FROM orders WHERE id_customer = '$customer_id'");
-                                $order_data = mysqli_fetch_assoc($order_query);
-                                echo $order_data['total_orders'];
-                                ?>
-                            </td>
+                            <td><?= htmlspecialchars($row['id_produk']) ?></td>
+                            <td><?= htmlspecialchars($row['nama_produk']) ?></td>
+                            <td>Rp <?= number_format($row['harga_produk'], 0, ',', '.') ?></td>
                             <td class="text-center">
                                 <button
                                     class="btn btn-sm btn-warning me-1"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#modalEditCustomer"
-                                    data-id="<?= $row['id_customer'] ?>"
-                                    data-nama="<?= $row['nama_lengkap'] ?>"
-                                    data-email="<?= $row['email'] ?>"
-                                    data-no-hp="<?= $row['no_hp'] ?>">
+                                    data-bs-target="#modalEditProduk"
+                                    data-id="<?= $row['id_produk'] ?>"
+                                    data-nama-produk="<?= $row['nama_produk'] ?>"
+                                    data-harga-produk="<?= $row['harga_produk'] ?>">
                                     <i class="fa fa-edit"></i>
                                 </button>
-
 
                                 <button
                                     class="btn btn-sm btn-danger"
                                     data-bs-toggle="modal"
                                     data-bs-target="#modalHapus"
-                                    data-id="<?= $row['id_customer'] ?>"
-                                    data-nama="<?= $row['nama_lengkap'] ?>"
-                                    data-table="customer"
-                                    data-column="id_customer">
+                                    data-id="<?= $row['id_produk'] ?>"
+                                    data-nama="<?= $row['nama_produk'] ?>"
+                                    data-table="produk"
+                                    data-column="id_produk">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </td>
@@ -76,54 +67,67 @@ $no = 1;
 
     </div>
 </div>
-<div class="modal fade" id="modalEditCustomer" tabindex="-1">
+
+<div class="modal fade" id="modalTambahProduk" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="edit.php" method="POST">
-
-                <input type="hidden" name="table" value="customer">
-                <input type="hidden" name="column" value="id_customer">
-                <input type="hidden" name="id" id="edit-id">
-
+            <form action="tambah.php" method="POST">
+                <input type="hidden" name="table" value="produk">
                 <div class="modal-header">
-                    <h5>Edit Customer</h5>
+                    <h5 class="modal-title">Tambah Produk</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label>Nama Lengkap</label>
-                        <input type="text" name="nama_lengkap" id="edit-nama" class="form-control" required>
+                        <label class="form-label">Nama Produk</label>
+                        <input type="text" name="nama_produk" class="form-control" required>
                     </div>
-
                     <div class="mb-3">
-                        <label>Email</label>
-                        <input type="email" name="email" id="edit-email" class="form-control" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Nomor Telepon</label>
-                        <input type="text" name="no_hp" id="edit-no-hp" class="form-control" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Password (opsional)</label>
-                        <input type="password" name="password" class="form-control">
-                        <small class="text-muted">Kosongkan jika tidak diubah</small>
+                        <label class="form-label">Harga Produk</label>
+                        <input type="text" name="harga_produk" class="form-control" required>
                     </div>
                 </div>
-
                 <div class="modal-footer">
                     <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                     <button class="btn btn-primary">Simpan</button>
                 </div>
-
             </form>
         </div>
     </div>
 </div>
 
+<div class="modal fade" id="modalEditProduk" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="edit.php" method="POST">
+                <input type="hidden" name="table" value="produk">
+                <input type="hidden" name="column" value="id_produk">
+                <input type="hidden" name="id" id="edit-id">
 
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Produk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Nama Produk</label>
+                        <input type="text" name="nama_produk" id="edit-nama-produk" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Harga Produk</label>
+                        <input type="text" name="harga_produk" id="edit-harga-produk" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button class="btn btn-primary">Simpan Perubahan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="modalHapus" tabindex="-1">
     <div class="modal-dialog modal-sm">
@@ -137,7 +141,6 @@ $no = 1;
                 <div class="modal-body text-center">
                     <p>Yakin hapus data:</p>
                     <b id="hapus-nama" class="text-danger"></b>
-
                     <input type="hidden" name="id" id="hapus-id">
                     <input type="hidden" name="table" id="hapus-table">
                     <input type="hidden" name="column" id="hapus-column">
@@ -157,11 +160,10 @@ $no = 1;
         const button = event.relatedTarget;
         const modal = event.target;
 
-        if (modal.id === 'modalEditCustomer') {
+        if (modal.id === 'modalEditProduk') {
             modal.querySelector('#edit-id').value = button.dataset.id;
-            modal.querySelector('#edit-nama').value = button.dataset.nama;
-            modal.querySelector('#edit-email').value = button.dataset.email;
-            modal.querySelector('#edit-no-hp').value = button.dataset.noHp;
+            modal.querySelector('#edit-nama-produk').value = button.dataset.namaProduk;
+            modal.querySelector('#edit-harga-produk').value = button.dataset.hargaProduk;
         }
 
         if (modal.id === 'modalHapus') {

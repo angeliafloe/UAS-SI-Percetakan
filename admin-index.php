@@ -54,11 +54,17 @@
             if ($menu == "") {
                 include 'dashboard-index.php';
             }
+            if ($menu == "data-order") {
+                include 'data-order-index.php';
+            }
             if ($menu == "data-admin") {
                 include 'data-admin-index.php';
             }
             if ($menu == "data-customer") {
                 include 'data-customer-index.php';
+            }
+            if ($menu == "data-produk") {
+                include 'data-produk-index.php';
             }
             ?>
 

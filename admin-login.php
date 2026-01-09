@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// <<< TAMBAHAN: kalau sudah login, jangan balik ke login
 if (isset($_SESSION['admin_logged_in'])) {
     header("Location: admin-index.php");
     exit;

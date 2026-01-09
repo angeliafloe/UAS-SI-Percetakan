@@ -1,56 +1,65 @@
 <?php
-session_start();
 require 'connect.php';
 
-if (!isset($_SESSION['admin_logged_in'])) {
-    die('Akses ditolak.');
+$table  = $_POST['table'];
+$column = $_POST['column'];
+$id     = $_POST['id'];
+
+$allowed_tables = ['admins', 'customer', 'produk'];
+
+if (!in_array($table, $allowed_tables)) {
+    die('Akses ditolak');
 }
 
-if (!isset($_POST['table'], $_POST['id'])) {
-    die('Akses ditolak.');
-}
-
-$table = $_POST['table'];
-$id    = (int) $_POST['id'];
-
-$allowedTables = [
-    'admins'   => 'id_admin',
-    'customer' => 'id_customer',
-    'produk'   => 'id_produk',
-    'orders'   => 'id_order'
-];
-
-if (!isset($allowedTables[$table])) {
-    die('Akses ditolak.');
-}
-
-$primaryKey = $allowedTables[$table];
-
-unset($_POST['table'], $_POST['id']);
-
-$set    = [];
+$fields = [];
 $values = [];
-$types  = '';
 
-foreach ($_POST as $key => $value) {
+// ADMIN
+if ($table === 'admins') {
+    $fields[] = "username_admin = ?";
+    $values[] = $_POST['username_admin'];
 
-    // password kosong = gak diubah
-    if ($key === 'password_admin') {
-        if (empty($value)) continue;
+    $fields[] = "nama_admin = ?";
+    $values[] = $_POST['nama_admin'];
 
-        $value = password_hash($value, PASSWORD_DEFAULT);
+    if (!empty($_POST['password_admin'])) {
+        $fields[] = "password_admin = ?";
+        $values[] = password_hash($_POST['password_admin'], PASSWORD_DEFAULT);
     }
-
-    $set[]    = "$key = ?";
-    $values[] = $value;
-    $types   .= 's';
 }
 
-$sql = "UPDATE $table SET " . implode(', ', $set) . " WHERE $primaryKey = ?";
+// CUSTOMER
+if ($table === 'customer') {
+    $fields[] = "nama_lengkap = ?";
+    $values[] = $_POST['nama_lengkap'];
+
+    $fields[] = "email = ?";
+    $values[] = $_POST['email'];
+
+    $fields[] = "no_hp = ?";
+    $values[] = $_POST['no_hp'];
+
+    if (!empty($_POST['password'])) {
+        $fields[] = "password = ?";
+        $values[] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    }
+}
+
+// PRODUK
+if ($table === 'produk') {
+    $fields[] = "nama_produk = ?";
+    $values[] = $_POST['nama_produk'];
+
+    $fields[] = "harga_produk = ?";
+    $values[] = $_POST['harga_produk'];
+}
+
+$sql = "UPDATE $table SET " . implode(', ', $fields) . " WHERE $column = ?";
 $values[] = $id;
-$types   .= 'i';
 
 $stmt = mysqli_prepare($conn, $sql);
+
+$types = str_repeat('s', count($values));
 mysqli_stmt_bind_param($stmt, $types, ...$values);
 mysqli_stmt_execute($stmt);
 

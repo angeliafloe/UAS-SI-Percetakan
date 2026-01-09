@@ -53,7 +53,7 @@
                             </a>
                         </div>
 
-                        <form id="loginForm" method="POST" action="proses-login.php">
+                        <form id="loginForm" method="POST" action="login-process.php">
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="loginEmail" name="email" placeholder="name@example.com" required>
                                 <label for="loginEmail">Email</label>
@@ -95,25 +95,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('#loginForm').submit(function(e) {
-                e.preventDefault();
-                const email = $('#loginEmail').val();
-                const password = $('#loginPassword').val();
-                if (!email || !password) {
-                    alert('Email dan password harus diisi!');
-                    return false;
-                }
-                alert('Login berhasil! Selamat datang.');
-
-                setTimeout(function() {
-                    window.location.href = 'index.php';
-                }, 1000);
-            });
-        });
-    </script>
 </body>
 
 </html>

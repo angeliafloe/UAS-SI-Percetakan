@@ -32,6 +32,10 @@ $current_menu = $_GET['menu'] ?? 'dashboard';
                 <i class="fa fa-home me-2"></i>Dashboard
             </a>
 
+            <a href="admin-index.php?menu=data-order" class="nav-item nav-link <?= ($current_menu == 'data-order') ? 'active' : '' ?>">
+                <i class="fa fa-users-cog me-2"></i>Data Order
+            </a>
+
             <a href="admin-index.php?menu=data-admin" class="nav-item nav-link <?= ($current_menu == 'data-admin') ? 'active' : '' ?>">
                 <i class="fa fa-user-shield me-2"></i>Data Admin
             </a>
@@ -44,7 +48,7 @@ $current_menu = $_GET['menu'] ?? 'dashboard';
                 <i class="fa fa-receipt me-2"></i>Laporan Transaksi
             </a>
 
-            <a href="admin-index.php?menu=jasa" class="nav-item nav-link <?= ($current_menu == 'jasa') ? 'active' : '' ?>">
+            <a href="admin-index.php?menu=data-produk" class="nav-item nav-link <?= ($current_menu == 'data-produk') ? 'active' : '' ?>">
                 <i class="fa fa-clipboard-list me-2"></i>Daftar Jasa
             </a>
 

@@ -44,12 +44,12 @@ $current_menu = $_GET['menu'] ?? 'dashboard';
                 <i class="fa fa-users-cog me-2"></i>Data Customer
             </a>
 
-            <a href="admin-index.php?menu=laporan" class="nav-item nav-link <?= ($current_menu == 'laporan') ? 'active' : '' ?>">
-                <i class="fa fa-receipt me-2"></i>Laporan Transaksi
-            </a>
-
             <a href="admin-index.php?menu=data-produk" class="nav-item nav-link <?= ($current_menu == 'data-produk') ? 'active' : '' ?>">
                 <i class="fa fa-clipboard-list me-2"></i>Daftar Jasa
+            </a>
+
+            <a href="admin-index.php?menu=laporan" class="nav-item nav-link <?= ($current_menu == 'laporan') ? 'active' : '' ?>">
+                <i class="fa fa-receipt me-2"></i>Laporan Transaksi
             </a>
 
             <hr class="mx-3 my-2 text-secondary">

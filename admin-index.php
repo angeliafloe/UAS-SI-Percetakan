@@ -66,6 +66,9 @@
             if ($menu == "data-produk") {
                 include 'data-produk-index.php';
             }
+            if ($menu == "laporan") {
+                include 'laporan-transaksi-index.php';
+            }
             ?>
 
             <!-- Footer Start -->

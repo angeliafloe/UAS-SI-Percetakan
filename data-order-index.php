@@ -32,7 +32,7 @@ $query = mysqli_query($conn, "SELECT * FROM orders ORDER BY id_order ASC");
                         <tr>
                             <td><?= $no++ ?></td>
                             <td><?= htmlspecialchars($row['id_order']) ?></td>
-                            <td><?= htmlspecialchars($row['nama_lengkap']) ?></td>
+                            <td><?= htmlspecialchars($row['id_customer']) ?></td>
                             <td><?= date('d-m-Y H:i', strtotime($row['tgl_jam_pesan'])) ?></td>
                             <td>Rp <?= number_format($row['total_biaya'], 0, ',', '.') ?></td>
                             <td>
@@ -49,7 +49,7 @@ $query = mysqli_query($conn, "SELECT * FROM orders ORDER BY id_order ASC");
                                 </span>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-sm btn-info"
+                                <button class="btn btn-sm btn-warning"
                                     data-bs-toggle="modal"
                                     data-bs-target="#modalStatusOrder"
                                     data-id="<?= $row['id_order'] ?>"
@@ -70,7 +70,7 @@ $query = mysqli_query($conn, "SELECT * FROM orders ORDER BY id_order ASC");
 <div class="modal fade" id="modalStatusOrder" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="order_process.php" method="POST">
+            <form action="order-process.php" method="POST">
                 <input type="hidden" name="id_order" id="modal-id-order">
 
                 <div class="modal-header">
@@ -91,8 +91,8 @@ $query = mysqli_query($conn, "SELECT * FROM orders ORDER BY id_order ASC");
                 </div>
 
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button class="btn btn-primary">Simpan</button>
+                    <button class="btn" style="background-color: none; color:black;" data-bs-dismiss="modal">Batal</button>
+                    <button class="btn" style="background-color: #0a6ea2; color:white;">Simpan</button>
                 </div>
             </form>
         </div>

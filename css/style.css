@@ -1,5 +1,5 @@
 :root {
-  --primary: #009cff;
+  --primary: #0a6ea2;
   --light: #f3f6f9;
   --dark: #191c24;
   --soft-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
@@ -213,14 +213,19 @@ body {
 
 .content .navbar .navbar-nav .nav-link {
   margin-left: 25px;
-  padding: 12px 0;
-  color: var(--dark);
+  padding: 12px 40px;
+  color: #0a6ea2;
   outline: none;
 }
 
 .content .navbar .navbar-nav .nav-link:hover,
 .content .navbar .navbar-nav .nav-link.active {
   color: var(--primary);
+}
+
+.content .navbar-customer .navbar-nav .nav-link:hover,
+.content .navbar-customer .navbar-nav .nav-link.active {
+  color: white;
 }
 
 .content .navbar .sidebar-toggler,

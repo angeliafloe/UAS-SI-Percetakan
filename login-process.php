@@ -11,7 +11,7 @@ $user  = mysqli_fetch_assoc($query);
 if ($user && password_verify($password, $user['password'])) {
 
     $_SESSION['id_customer']   = $user['id_customer'];
-    $_SESSION['nama_customer'] = $user['nama_customer'];
+    $_SESSION['nama_lengkap'] = $user['nama_lengkap'];
     $_SESSION['email']         = $user['email'];
 
     header("Location: index.php");
@@ -25,3 +25,4 @@ if ($user && password_verify($password, $user['password'])) {
     </script>
     ";
 }
+  
